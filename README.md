@@ -1,5 +1,7 @@
 # Blog-example
 
+Blog example project with Svelte and svelte-router 
+
 ## Install
 
 ```bash
