@@ -2,6 +2,8 @@
 
 Blog example project with Svelte and svelte-router 
 
+(from Youtube channel - Classsed - Svelte Tutorial (Better than React?) )
+
 ## Install
 
 ```bash
