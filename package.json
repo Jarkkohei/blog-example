@@ -21,6 +21,7 @@
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
-    "materialize-css": "^1.0.0-rc.2"
+    "materialize-css": "^1.0.0-rc.2",
+    "svelte-routing": "^1.2.0"
   }
 }
