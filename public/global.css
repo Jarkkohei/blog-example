@@ -1,0 +1,7 @@
+li.link-wrapper > a.active {
+    background-color: rgba(0, 0, 0, 0.1);
+    /*border-bottom: 2px solid #fff;*/
+    /*font-weight: bold;*/
+    /*color: yellow;*/
+    /*text-shadow: 1px 1px #000;*/
+}
