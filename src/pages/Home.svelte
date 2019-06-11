@@ -10,6 +10,15 @@
     });
 </script>
 
+<style>
+    .card.card-content p.timestamp {
+        color: #999;
+        margin-bottom: 10px;
+    }
+
+
+</style>
+
 <div class="row">
     {#if posts.length === 0}
         <h3>Loading...</h3>
@@ -19,7 +28,7 @@
                 <div class="card">
                     <div class="card-content">
                         <p class="card-title">{post.title}</p>
-                        <p>{post.createdAt}</p>
+                        <p class="timestamp">{post.createdAt}</p>
                         <p>{post.body}</p>
                     </div>
                 </div>
