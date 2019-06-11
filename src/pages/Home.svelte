@@ -20,13 +20,15 @@
     }
 
     function deletePost(postId) {
-        fetch(`${apiBaseUrl}/post/${postId}`, {
-            method: 'DELETE'
-        }).then(res => {
-            return res.json();
-        }).then(() => {
-            posts = posts.filter(post => post.id !== postId);
-        });
+        if(confirm('Are you sure?')) {
+            fetch(`${apiBaseUrl}/post/${postId}`, {
+                method: 'DELETE'
+            }).then(res => {
+                return res.json();
+            }).then(() => {
+                posts = posts.filter(post => post.id !== postId);
+            });
+        }
     }
 </script>
 
