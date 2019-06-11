@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import PostForm from '../components/PostForm.svelte';
 
     const apiBaseUrl = 'https://ndb99xkpdk.execute-api.eu-west-2.amazonaws.com/dev';
     let posts = [];
@@ -26,7 +27,7 @@
     .card.card-content.card-title {
         margin-bottom: 0;
     }
-    
+
     .card.card-content p.timestamp {
         color: #999;
         margin-bottom: 10px;
@@ -34,6 +35,12 @@
 
 
 </style>
+
+<div class="row">
+    <div class="col s6">
+        <PostForm />
+    </div>
+</div>
 
 <div class="row">
     {#if posts.length === 0}
