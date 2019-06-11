@@ -20,7 +20,13 @@
     }
 
     function deletePost(postId) {
-        console.log(postId);
+        fetch(`${apiBaseUrl}/post/${postId}`, {
+            method: 'DELETE'
+        }).then(res => {
+            return res.json();
+        }).then(() => {
+            posts = posts.filter(post => post.id !== postId);
+        });
     }
 </script>
 
