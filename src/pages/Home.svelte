@@ -15,7 +15,7 @@
         <h3>Loading...</h3>
     {:else}
         {#each posts as post}
-            <div class.col s6>
+            <div class="col s6">
                 <div class="card">
                     <div class="card-content">
                         <p class="card-title">{post.title}</p>
