@@ -8,9 +8,25 @@
         const res = await fetch(apiBaseUrl + '/posts');
         posts = await res.json();
     });
+
+    function editPost(post) {
+        console.log(post);
+    }
+
+    function deletePost(postId) {
+        console.log(postId);
+    }
 </script>
 
 <style>
+    .delete-btn {
+        color: red !important;
+    }
+
+    .card.card-content.card-title {
+        margin-bottom: 0;
+    }
+    
     .card.card-content p.timestamp {
         color: #999;
         margin-bottom: 10px;
@@ -30,6 +46,10 @@
                         <p class="card-title">{post.title}</p>
                         <p class="timestamp">{post.createdAt}</p>
                         <p>{post.body}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" on:click={() => editPost(post)}>Edit</a>
+                        <a href="#" class="delete-btn" on:click={() => deletePost(post.id)}>Delete</a>
                     </div>
                 </div>
             </div>
