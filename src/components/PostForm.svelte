@@ -1,4 +1,8 @@
 <script>
+    import {createEventDispatcher} from 'svelte';
+
+    const dispatch = createEventDispatcher();
+
     let title = '';
     let body = '';
     let loading = false;
@@ -22,6 +26,7 @@
         });
 
         const post = await res.json();
+        dispatch('postCreated', post);
         loading = false;
     }
 </script>
