@@ -5,6 +5,12 @@
     const apiBaseUrl = 'https://ndb99xkpdk.execute-api.eu-west-2.amazonaws.com/dev';
     let posts = [];
 
+    let editingPost = {
+        id: null,
+        title: '',
+        body: ''
+    };
+
     onMount(async () => {
         const res = await fetch(apiBaseUrl + '/posts');
         posts = await res.json();
@@ -12,11 +18,25 @@
 
     // Rename the event.detail as post inside the function
     function addPost({detail: post}) {
-        posts = [post, ...posts];
+        if(posts.find(p = p.id === post.id)) {
+            const index = posts.findIndex(p => p.id === post.id);
+            let postsUpdated = posts;
+
+            postsUpdated.splice(index, 1, post);
+            posts = postsUpdated;
+        } else {
+            posts = [post, ...posts];
+        }
+
+        editingPost = {
+            id: null,
+            title: '',
+            body: ''
+        };
     }
 
     function editPost(post) {
-        console.log(post);
+        editingPost = post;
     }
 
     function deletePost(postId) {
@@ -51,7 +71,7 @@
 
 <div class="row">
     <div class="col s6">
-        <PostForm on:postCreated={addPost}/>
+        <PostForm on:postCreated={addPost} {editingPost}/>
     </div>
 </div>
 
