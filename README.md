@@ -6,12 +6,31 @@ Blog example project with Svelte and svelte-router
 
 ## Install
 
+Clone project and install dependencies.
 ```bash
 git clone https://github.com/Jarkkohei/blog-example.git
 cd blog-example
 npm install
+```
+
+Add `env.js` -file into the root folder of your project and add following code into it, replacing the `<YOUR_API_BASE_URL_HERE>` with your API base url ( without the trailing `/` )
+
+This file can be used to also store other constants, although be aware that they will be visible in the bundle.js -file as a plain text.
+
+```javascript
+const env = {
+    API_BASE_URL: '<YOUR_API_BASE_URL_HERE>'
+};
+
+export default env;
+```
+
+Run the developement server.
+```bash
 npm run dev
 ```
+
+
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 

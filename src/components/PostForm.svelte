@@ -1,5 +1,6 @@
 <script>
     import {createEventDispatcher} from 'svelte';
+    import env from '../../env.js';
 
     export let editingPost;
 
@@ -8,8 +9,6 @@
     $: title = editingPost.title;
     $: body = editingPost.body;
     let loading = false;
-
-    const apiBaseUrl = 'https://ndb99xkpdk.execute-api.eu-west-2.amazonaws.com/dev';
 
     async function onSubmit(e) {
         e.preventDefault();
@@ -24,10 +23,10 @@
 
         let url, method;
         if(editingPost.id) {
-            url = `${apiBaseUrl}/post/${editingPost.id}`;
+            url = `${env.API_BASE_URL}/post/${editingPost.id}`;
             method = 'PUT';
         } else {
-            url = `${apiBaseUrl}/post`;
+            url = `${env.API_BASE_URL}/post`;
             method = 'POST';
         }
 

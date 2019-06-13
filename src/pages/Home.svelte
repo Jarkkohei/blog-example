@@ -1,8 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import PostForm from '../components/PostForm.svelte';
+    import env from '../../env.js';
 
-    const apiBaseUrl = 'https://ndb99xkpdk.execute-api.eu-west-2.amazonaws.com/dev';
     let posts = [];
 
     let editingPost = {
@@ -14,7 +14,7 @@
     let postLimit = 6;
 
     onMount(async () => {
-        const res = await fetch(`${apiBaseUrl}/posts/${postLimit}`);
+        const res = await fetch(`${env.API_BASE_URL}/posts/${postLimit}`);
         posts = await res.json();
     });
 
@@ -43,7 +43,7 @@
 
     function deletePost(postId) {
         if(confirm('Are you sure?')) {
-            fetch(`${apiBaseUrl}/post/${postId}`, {
+            fetch(`${env.API_BASE_URL}/post/${postId}`, {
                 method: 'DELETE'
             }).then(res => {
                 return res.json();
@@ -54,7 +54,7 @@
     }
 
     function setLimit() {
-        fetch(`${apiBaseUrl}/posts/${postLimit}`)
+        fetch(`${env.API_BASE_URL}/posts/${postLimit}`)
             .then(res => {
                 return res.json();
             })
