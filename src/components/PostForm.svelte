@@ -24,7 +24,7 @@
 
         let url, method;
         if(editingPost.id) {
-            url = `${apiBasUrl}/post/${editingPost.id}`;
+            url = `${apiBaseUrl}/post/${editingPost.id}`;
             method = 'PUT';
         } else {
             url = `${apiBaseUrl}/post`;

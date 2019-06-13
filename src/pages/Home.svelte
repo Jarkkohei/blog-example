@@ -11,14 +11,16 @@
         body: ''
     };
 
+    let postLimit = 6;
+
     onMount(async () => {
-        const res = await fetch(apiBaseUrl + '/posts');
+        const res = await fetch(`${apiBaseUrl}/posts/${postLimit}`);
         posts = await res.json();
     });
 
     // Rename the event.detail as post inside the function
     function addPost({detail: post}) {
-        if(posts.find(p = p.id === post.id)) {
+        if(posts.find(p => p.id === post.id)) {
             const index = posts.findIndex(p => p.id === post.id);
             let postsUpdated = posts;
 
@@ -50,6 +52,16 @@
             });
         }
     }
+
+    function setLimit() {
+        fetch(`${apiBaseUrl}/posts/${postLimit}`)
+            .then(res => {
+                return res.json();
+            })
+            .then(postsData => {
+                posts = postsData;
+            });
+    }
 </script>
 
 <style>
@@ -66,12 +78,23 @@
         margin-bottom: 10px;
     }
 
+    .postsLimit {
+        margin: 50px;
+    }
 
 </style>
 
 <div class="row">
     <div class="col s6">
         <PostForm on:postCreated={addPost} {editingPost}/>
+    </div>
+
+    <div class="col s3 postsLimit">
+        <p>Limit number of posts</p>
+        <input type="number" bind:value={postLimit} />
+        <button on:click={setLimit} class="waves-effect waves-light btn">
+            Set
+        </button>
     </div>
 </div>
 
