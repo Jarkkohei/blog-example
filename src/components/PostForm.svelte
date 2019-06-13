@@ -59,7 +59,7 @@
         </div>
 
         <div class="input-field">
-            <label for="bosy">Body</label>
+            <label for="body">Body</label>
             <input type="text" bind:value={editingPost.body}>
         </div>
 
